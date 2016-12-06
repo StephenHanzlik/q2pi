@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/StephenHanzlik/q2pi/issues"
   },
-  "homepage": "https://github.com/StephenHanzlik/q2pi#readme"
+  "homepage": "https://github.com/StephenHanzlik/q2pi#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "morgan": "^1.7.0",
+    "pg": "^6.1.0"
+  }
 }
