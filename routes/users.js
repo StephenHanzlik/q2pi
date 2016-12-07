@@ -6,12 +6,13 @@ const knex = require('../knex');
 // const boom = require('boom'); // error logging module
 const morgan = require('morgan'); // req/res logging module
 const bcrypt = require('bcrypt');
+
 router.use(morgan('short')); // use morgan and format it's output
 
 
 router.get('/', function(req, res, next) {
     knex('users')
-        .orderBy('name')
+        .orderBy('username')
         .then((result) => {
             res.send(result);
         })
@@ -39,6 +40,7 @@ router.get('/:username', function (req,res,next) {
 
 
 router.post('/', (req,res,next) => {
+  console.log(req.body);
   var hash = bcrypt.hashSync(req.body.password, 8);
   knex('users')
   .where({username: req.body.username})
@@ -47,7 +49,8 @@ router.post('/', (req,res,next) => {
       knex('users')
       .insert({
         username: req.body.username,
-        password: hash
+        password: hash,
+        email: req.body.email
       })
       .then(function (result) {
         res.sendStatus(201);

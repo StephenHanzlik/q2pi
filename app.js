@@ -8,8 +8,11 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(morgan('short'));
 app.use(express.static('public'));
+
 
 var users = require('./routes/users.js');
 app.use('/users',users);
