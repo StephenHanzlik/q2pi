@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-const boom = require('boom'); // error logging module
+// const boom = require('boom'); // error logging module
 const morgan = require('morgan'); // req/res logging module
 const bcrypt = require('bcrypt');
 router.use(morgan('short')); // use morgan and format it's output
