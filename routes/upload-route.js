@@ -55,3 +55,4 @@ router.post('/', function(req, res, next){
   form.parse(req);
 
 });
+module.exports = router;

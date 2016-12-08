@@ -13,9 +13,9 @@ app.use(express.static('public'));
 
 
 var users = require('./routes/users.js');
-var uploads = require('./routes/uploads.js');
-app.use = ('/uploads', uploads);
+var uploads = require('./routes/upload-route.js');
 app.use('/users', users);
+app.use('/uploads', uploads);
 
 app.use((err, _req, res, _next) => {
   if (err.output && err.output.statusCode) {
