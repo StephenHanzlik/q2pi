@@ -1,13 +1,11 @@
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
-}
+
 
 .form-signin {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  background-color: rgba(134, 134, 134, 0.7);
+  border-radius: 6%;
 }
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
@@ -37,4 +35,10 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.signin-container{
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 30px;
+
 }
