@@ -93,7 +93,7 @@
 }
 .jumbotron {
   height: 700px;
-  background-image:  url(../landingImage.jpg);
+  background-image:  url(../../landingImage.jpg);
   background-size: cover;
   display: flex;
   justify-content: center;
