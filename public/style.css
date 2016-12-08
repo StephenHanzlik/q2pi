@@ -1,0 +1,22 @@
+.jumbotron {
+  height: 700px;
+  background-image:  url(../landingImage.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+.opacityDiv{
+ height: 500px;
+ width: 650px;
+background-color: rgba(0,0,0, .65);
+}
+#landingH1{
+  text-align: center;
+  color: antiquewhite;
+}
+h1 {
+}
+p{
+  text-align: center;
+  color: antiquewhite;
+}
