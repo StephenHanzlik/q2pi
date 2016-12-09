@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+
+    <title>sign-up page</title>
 </head>
+
 <body>
-  <h1>sign up</h1>
+    <h1><a href="index.html">EGGPiFS</a> | Egg Pi File Storage</h1>
+    <div class="container">
+
+        <div class="signup-container">
+
+            <form class="form-signup">
+                <h2 class="form-signin-heading">Please sign up</h2>
+                <label for="inputName" class="sr-only">Name</label>
+                <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4"></div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <h6>Already a User?<a href="signin.html"><button type="button" name="login-btn">Sign In</button></a></h6>
+
+
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4"></div>
+
+    </div>
+    <!-- /container -->
+
+
 </body>
+
 </html>
