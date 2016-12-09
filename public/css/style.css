@@ -98,14 +98,21 @@
   display: flex;
   justify-content: center;
 }
-.opacityDiv{
+.opacity-div{
  height: 500px;
  width: 650px;
-background-color: rgba(0,0,0, .65);
+ background-color: rgba(0,0,0, .65);
 }
-#landingH1{
+.egg-img-div{
+  display: flex;
+  justify-content: center;
+}
+#landing-h1{
   text-align: center;
   color: antiquewhite;
+}
+#egg-img{
+  text-align: center;
 }
 p{
   text-align: center;
