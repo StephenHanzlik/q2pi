@@ -4,7 +4,6 @@
   // $('#signin').submit((event) => {
   $('#signin-btn').click((event) => {
 
-    console.log("submit");
     event.preventDefault();
 
     const email = $('#inputEmail').val().trim();
