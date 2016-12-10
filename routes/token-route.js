@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+    console.log(req.body);
     const bodyObj = {
         email: req.body.email,
         password: req.body.password
@@ -40,14 +41,14 @@ router.post('/', function(req, res, next) {
         .first()
         .then((result) => {
             if (result) {
-                if (bcrypt.compareSync(bodyObj.password, result.hashed_password)) {
-                    delete result.hashed_password;
+                if (bcrypt.compareSync(bodyObj.password, result.password)) {
+                    delete result.password;
                     delete result.created_at;
-                    var authenticated_user = camelizeKeys(result);
+                    // var authenticated_user = (result);
                     var token = jwt.sign(req.body.email, privateKey);
                     res.cookie('token', token, {
                         httpOnly: true
-                    }).send(authenticated_user);
+                    }).send(result);
                 } else {
                     // bad password (says email or password to satisfy the test)
                     next(boom.create(400, 'Bad email or password'));

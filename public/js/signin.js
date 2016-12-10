@@ -1,7 +1,9 @@
 'use strict';
 (function() {
 
-  $('.form-signin').submit((event) => {
+  // $('#signin').submit((event) => {
+  $('#signin-btn').click((event) => {
+
     event.preventDefault();
 
     const email = $('#inputEmail').val().trim();
