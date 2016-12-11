@@ -2,6 +2,7 @@
 
 (function() {
 
+  // $('#signin').submit((event) => {
   $('#signup-btn').click((event) => {
 
     event.preventDefault();
@@ -19,14 +20,14 @@
     }
     if (!email) {
       console.log('no email');
-      //toastr.options = {
+      // toastr.options = {
       //   "positionClass": "toast-bottom-right"
       // };
       return toastr.error('Email must not be blank');
     }
-
     if (!password) {
       console.log('no password');
+      // return Materialize.warning('Password must not be blank', 3000);
       return toastr.error('Password must not be blank');
     }
 
