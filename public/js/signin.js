@@ -1,21 +1,20 @@
 'use strict';
 (function() {
 
-  // $('#signin').submit((event) => {
   $('#signin-btn').click((event) => {
 
     event.preventDefault();
 
     const email = $('#inputEmail').val().trim();
-    const password = $('#inputPassword').val();
+    const password = $('#inputPassword').val().trim();
 
     if (!email) {
-      // return Materialize.toast('Email must not be blank', 3000);
+      //return toastr.warning('Email must not be blank', 3000);
       console.log('no email')
     }
 
     if (!password) {
-      // return Materialize.toast('Password must not be blank', 3000);
+      //return toastr.warning('Password must not be blank', 3000);
       console.log('no password');
     }
 
@@ -32,7 +31,7 @@
         window.location.href = '/user-landing.html';
       })
       .fail(($xhr) => {
-        // Materialize.toast($xhr.responseText, 3000);
+        //toastr.warning($xhr.responseText, 3000);
         console.log("sign in fail");
       });
   });
