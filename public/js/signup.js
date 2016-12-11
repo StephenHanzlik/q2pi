@@ -20,7 +20,7 @@
     }
     if (!email) {
       console.log('no email');
-      // toastr.options = {
+      //toastr.options = {
       //   "positionClass": "toast-bottom-right"
       // };
       return toastr.error('Email must not be blank');
