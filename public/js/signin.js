@@ -9,12 +9,12 @@
     const password = $('#inputPassword').val().trim();
 
     if (!email) {
-      //return toastr.warning('Email must not be blank', 3000);
+      return toastr.error('Email must not be blank');
       console.log('no email')
     }
 
     if (!password) {
-      //return toastr.warning('Password must not be blank', 3000);
+      return toastr.error('Password must not be blank');
       console.log('no password');
     }
 

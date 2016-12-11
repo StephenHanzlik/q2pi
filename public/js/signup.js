@@ -2,7 +2,6 @@
 
 (function() {
 
-  // $('#signin').submit((event) => {
   $('#signup-btn').click((event) => {
 
     event.preventDefault();
@@ -28,7 +27,6 @@
 
     if (!password) {
       console.log('no password');
-      // return Materialize.warning('Password must not be blank', 3000);
       return toastr.error('Password must not be blank');
     }
 
