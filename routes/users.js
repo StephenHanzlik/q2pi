@@ -53,7 +53,8 @@ router.post('/', (req, res, next) => {
             email: req.body.email
           })
           .then(function(result) {
-            res.sendStatus(201);
+            res.send(result);
+            // res.sendStatus(200);
           })
           .catch(function(err) {
             next(err);
