@@ -1,8 +1,3 @@
-User:
-q2pi-heroku
+Pivotal Tracker Link:
 
-Access key id:
-AKIAJZW5TPRDDM7JAOTQ
-
-Secret Access Key:
-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
+https://www.pivotaltracker.com/n/projects/1931153
