@@ -31,7 +31,7 @@
         window.location.href = '/user-landing.html';
       })
       .fail(($xhr) => {
-        //toastr.warning($xhr.responseText, 3000);
+        toastr.error($xhr.responseText);
         console.log("sign in fail");
       });
   });
