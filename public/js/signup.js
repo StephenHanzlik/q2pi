@@ -11,6 +11,13 @@
     const username = $('#inputName').val().trim();
     const password = $('#inputPassword').val().trim();;
 
+    if (!username) {
+      console.log('no username');
+      // toastr.options = {
+      //   "positionClass": "toast-bottom-right"
+      // };
+      return toastr.error('Username must not be blank');
+    }
     if (!email) {
       console.log('no email');
       // toastr.options = {
