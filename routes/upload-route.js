@@ -60,9 +60,28 @@ router.post('/', function(req, res, next){
     // } else {
     //   fs.rename(file.path, path.join(form.uploadDir, file.name));
     // }
+
+
     ////// duplicate file name handling attempt 3
-    var uploadFileName = file.path + "_" + file.name;
-    fs.rename(file.path, uploadFileName);
+    // create a unique string of characters plus the original file's name
+    // this allows a file to be uploaded multiple times, but not overwrite existing files in the filesystem
+    // for example '.../upload_39fe0713af8bbbbcc7ceceeeac031a69' + "_" 'G36_Notes.txt'
+    var uniqueFileName = file.path + "_" + file.name;
+
+    fs.rename(file.path, uniqueFileName);
+    knex('uploads')
+        .insert({
+            name: file.name,
+            path: uniqueFileName,
+            category: 'text',
+            user_id: 1
+        }, '*')
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            next(err);
+        });
   });
 
   // log any errors that occur
@@ -79,4 +98,6 @@ router.post('/', function(req, res, next){
   form.parse(req);
 
 });
+
+
 module.exports = router;
