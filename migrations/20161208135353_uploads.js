@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('uploads', function(table) {
     // id
     table.increments().notNullable();
-    // name
+    // user facing name
     table.string('name').notNullable();
     // path
     table.string('path').notNullable();

@@ -1,0 +1,722 @@
+Learning to Learn
+
+	Step 1
+		- set the stage
+			- clear your head with techniques like meditation
+
+		- figure out the what and the why
+			- set objectives for how you'll learn something and measure success
+				- learn to ski
+					- get lessons
+					- get beginner skis
+					- get a season pass to a resort nearby
+					- go to the resort once a week during the ski season for 3 hours
+					- spend 3 trips on beginner slopes, 3 weeks on to square and 5 weeks diamond slopes
+
+					Why? - recreation/entertainment/social aspect
+
+		- Process over product
+
+			- breaking down tasks into achievable goals results in more productivity and less stress.
+			- pomodoro timers - 25 minutes of work followed by 5 minutes of rest
+
+		- focus
+
+
+	Step 2
+		- play
+			- have fun with the project
+		- dig in
+			- ask questions about the project
+		- wrestle with it
+		- strive for fluency
+		- take risks
+		- growth mindset rather than fixed mindset
+			- growth mindset means intelligence can be developed
+
+	Step 3
+		- have fun
+		- reflect on your progress
+		- Bloom's taxonomy -
+			- create (this is acheived last)
+			- evaluate
+			- analyze
+			- apply
+			- understand
+			- remember (this mus be acheived first)
+
+
+
+
+/*
+===============================================
+10/4/2016
+===============================================
+*/
+
+Build and Burn
+	- tool to build fluency
+	- record your screen using quicktime
+	- practice doing things under a time limit,
+
+What are my core values?
+Name one of your core values, and one way that web development relates to or could be used in service of that core value (share with a neighbor in class), add to slack afterward.
+	Core value: self-improvement
+		- By collaborating with other programmers, I can share what I've learned with others, and learn new ideas that I haven't thought of; not just for coding langauages/concepts, but for stress mitigation, project planning/management, and overall success stategies.
+
+
+
+The CLI
+	Objectives:
+		- why do we need to learn the CLI?
+			- makes you a faster, more efficient, more powerful (chaining commands, scripting) developer
+		- what is the UNIX philosophy?
+			- do one thing and do it well
+		- what ways can we use the CLI to increase productivity?
+		- what exercise should I do?
+
+
+		- Article Exercise:
+			Find out the account name and groups of the current user of your computer.
+				- ➜  ~ whoami
+					christopher
+					➜  ~ groups
+					staff com.apple.sharepoint.group.1 everyone localaccounts _appserverusr admin _appserveradm _lpadmin _appstore _lpoperator _developer com.apple.access_ftp com.apple.access_screensharing com.apple.access_ssh
+
+			What's the current working directory of your shell?
+				➜  ~ pwd
+				/Users/christopher
+
+			Is the path returned by the pwd command absolute or relative?
+				- absolute - it starts with a "/"
+
+			In what order are the files and directories displayed?
+				- alphabetical
+
+			How can you tell if an item is a file or directory? Hint: look at its permissions.
+				- directories have a "d" at the beginning of the permissions "drwxr-xr-x" vs "-rw-------"
+
+			With the man command, spend three minutes discovering new flags for the ls command. Try out different combinations of flags to see what they do. For each flag you try, make a prediction about the effect it will have. After trying it, review your prediction.
+
+			Were you right? If not, in what way were you wrong? What happened that surprised you? These sorts of surprises are the seeds of learning so treasure them.
+
+			TIP: http://explainshell.com/ is a great resource for understanding complex shell commands.
+
+			Why can't you see any hidden files and directories in the Finder?
+				- finder hides some files to keep things simple
+
+
+
+			CLI Murder Mystery notes
+
+				CLUE: Footage from an ATM security camera is blurry but shows that the perpetrator is a tall male, at least 6'.
+				CLUE: Found a wallet believed to belong to the killer: no ID, just loose change, and membership cards for AAA, Delta SkyMiles, the local library, and the Museum of Bash History. The cards are totally untraceable and have no name, for some reason.
+				CLUE: Questioned the barista at the local coffee shop. He said a woman left right before they heard the shots. The name on her latte was Annabel, she had blond spiky hair and a New Zealand accent.
+
+
+
+				➜  mystery git:(master) cat people | grep "Annabel"
+
+				Annabel Sun	F	26	Hart Place, line 40
+				Oluwasegun Annabel	M	37	Mattapan Street, line 173
+				Annabel Church	F	38	Buckingham Place, line 179
+				Annabel Fuglsang	M	40	Haley Street, line 176
+
+
+
+				➜  mystery git:(master) cat vehicles | grep "Annabel"
+
+				Owner: Oluwasegun Annabel
+				Owner: Annabel Church
+				Owner: Annabel Sun
+				Owner: Annabel Fuglsang
+
+				Interviewed Ms. Church at 2:04 pm.  Witness stated that she did not see anyone she could identify as the shooter, that she ran away as soon as the shots were fired.
+
+				However, she reports seeing the car that fled the scene.  Describes it as a blue Honda, with a license plate that starts with "L337" and ends with "9"
+
+
+
+
+				➜  mystery git:(master) cat vehicles | grep "L337..9" -C 6 | grep "Color: Blue" -C 6 | grep "Make: Honda" -C 6
+
+				Owner: Yunlei Xu
+				Height: 5'0"
+				Weight: 214 lbs
+
+				License Plate L337QE9
+				Make: Honda
+				Color: Blue
+				Owner: Erika Owens
+				Height: 6'5"
+				Weight: 220 lbs
+
+				--
+				--
+				--
+				--
+				Owner: Mohamed Onuora
+				Height: 5'8"
+				Weight: 181 lbs
+
+				License Plate L337539
+				Make: Honda
+				Color: Blue
+				Owner: Aron Pilhofer
+				Height: 5'3"
+				Weight: 198 lbs
+
+				--
+				--
+				--
+				--
+				Owner: Flor Magnini
+				Height: 5'2"
+				Weight: 239 lbs
+
+				License Plate L337369
+				Make: Honda
+				Color: Blue
+				Owner: Heather Billings
+				Height: 5'2"
+				Weight: 244 lbs
+
+				--
+				--
+				--
+				--
+				Owner: Robyn Sigmond
+				Height: 6'3"
+				Weight: 137 lbs
+
+				License Plate L337DV9
+				Make: Honda
+				Color: Blue
+				Owner: Joe Germuska
+				Height: 6'2"
+				Weight: 164 lbs
+
+				--
+				--
+				--
+				--
+				Owner: Bridgitte Bale
+				Height: 5'11"
+				Weight: 176 lbs
+
+				License Plate L3375A9
+				Make: Honda
+				Color: Blue
+				Owner: Jeremy Bowers
+				Height: 6'1"
+				Weight: 204 lbs
+
+				--
+				--
+				--
+				--
+				Owner: Joseph Last
+				Height: 6'1"
+				Weight: 224 lbs
+
+				License Plate L337WR9
+				Make: Honda
+				Color: Blue
+				Owner: Jacqui Maher
+				Height: 6'2"
+				Weight: 130 lbs
+
+				➜  mystery git:(master)
+
+
+				SEPARATOR
+
+
+				License Plate L337QE9
+				Make: Honda
+				Color: Blue
+				Owner: Erika Owens
+				Height: 6'5"
+				Weight: 220 lbs
+
+				License Plate L337DV9
+				Make: Honda
+				Color: Blue
+				Owner: Joe Germuska
+				--
+				--
+				Weight: 137 lbs
+
+				License Plate L337DV9
+				Make: Honda
+				Color: Blue
+				Owner: Joe Germuska
+				Height: 6'2"
+				Weight: 164 lbs
+
+
+				License Plate L3375A9
+				Make: Honda
+				Color: Blue
+				Owner: Jeremy Bowers
+				Height: 6'1"
+				Weight: 204 lbs
+
+
+
+				License Plate L337WR9
+				Make: Honda
+				Color: Blue
+				Owner: Jacqui Maher
+				--
+				--
+				Weight: 224 lbs
+
+				License Plate L337WR9
+				Make: Honda
+				Color: Blue
+				Owner: Jacqui Maher
+				Height: 6'2"
+				Weight: 130 lbs
+
+
+/*
+===============================================
+10/5/2016
+===============================================
+*/
+
+Git
+	Objectives:
+		- discuss what a version control system is
+			- a time machine, with a written record of changes made to files, and a way to revery back to them, that many people can update and access
+		- describe how git works
+			- unstaged > staged > committed
+				- to stage - (git add)
+				- to commit - (git commit)
+		- initialize a repository with 'git init'
+		- check the status of changed files with 'git status'
+		- stage and commit files
+
+GitHub
+	Objectives
+		- discuss the difference between git and github
+			- github is where the files are backed up
+		- connect git and github
+			- git remote add origin [URL]
+		- send files from git to github
+			- git push origin master
+
+
+
+Intro to Programming ( Javascript )
+	objectives:
+		- explain what programming is
+			- a way to communicate with a computer in a manner it will understand, so the computer will do what you tell it to, usually to fulfill a purpose or need
+		- create an algorithm
+		- use correct and specific language to describe code
+			var x = 1
+				var is a keyword
+				x is an identfier and variable name
+				= is an operator
+				1 is a value
+
+			- identifiers (in js) must start with a letter, _ or $
+		- identify expressions
+			- expressions
+				- something that results in a value
+			- statement
+				- a block of code that does something
+
+
+/*
+===============================================
+10/6/2016
+===============================================
+*/
+
+
+Javascript
+	- Objectives
+		- What is javascript?
+			- untyped - you don't have to specify variable types
+		- what is ECMAScript?
+			- a standardized version of javascript
+		- Why is Javascript important?
+			- it makes websites interesting
+
+
+
+
+Functions
+	- objectives
+		- create a function that takes an argument
+			function sayHello(name) {
+				console.log("Hello " + name);
+			}
+			sayHello("Teddi");
+
+		- explain the parts/syntax of a function
+
+		- call a function with an argument
+
+	- what is a function
+		- reusable chunks of code that perform an operation and/or return a value
+
+
+
+
+
+
+
+
+
+
+
+/*
+===============================================
+10/7/2016
+===============================================
+*/
+Javascript
+	Objectives
+		- use the keyword return
+			- implicit return
+			- explicit return
+			- order matters
+			- line breaks matter
+		- use parameters & arguments
+			- parameters are the variables that you pass to the function
+				- greet(value1);
+			- arguments are what you use when you specifically pass something like a string to the function
+				- greet('lisette');
+				- default values will be overridden be passed values.
+		- use the keyword arguments
+			- we get an array-like object for free, containing all our arguments
+
+
+
+Javascript
+	- objectives
+		- describe the idfference between primitive and reference types
+			- primitives
+				- number
+				- string
+				- boolean
+				- null
+				- NaN
+				- undefined
+				- symbol
+			- reference
+				- arrays
+					- a collection of values associated with indexes
+				- objects
+					- a collection of key value pairs
+				- functions
+		- describe what is meant by object-oriented
+		- explain javascript
+
+
+
+
+
+
+
+
+
+/*
+===============================================
+10/12/2016
+===============================================
+*/
+
+DOM lecture:
+you do #1:
+
+aLInk
+assignedProperty
+assignedSlot
+
+
+
+
+
+
+
+
+/*
+===============================================
+10/17/2016
+===============================================
+*/
+Bootstrap and Materialize
+
+CDN - content delivery network
+	- a way to download files from the closest server to you
+
+Bootstrap -
+	- Bootstrap uses libraries that are stored on servers around the world. When someone opens a browser for a bootstrap page, it downloads the information from the nearest server
+
+	- everything is based on a 12 column page
+
+Materialize
+	- based on the "material" concept from google - everything is a card
+
+
+
+
+
+
+
+
+
+Career Services
+	- Exercise (5 mins)
+Write down everything that pops to mind about where you’ve been - roles you’ve had or traits that describes you.
+Write one sentence about what sparked your interest and brought you into Galvanize. Was it a project at work? An article you read? Or a person you saw speak? What sparked you to make this career pivot?
+Now write one sentence on your intention after the Galvanize program.
+Synthesize these three points of information into a summary, describing who you are, where you have been, and where you are going with your Galvanize education.
+(Optional) Share aloud with a partner or with the class.
+
+	- network engineer
+	- self taught
+	- team player
+	- responsibility
+	- information security
+	- programming
+	- self-improvement
+	- above and beyond
+	- dedicated
+	- tenacious
+	- the speed with which the software development industry expands and changes drew me to galvanize to learn more about it. Being a part of a cultural movement like software development is an exciting chance to learn, grow, and improve myself as a person.
+	- After Galvanize I want to combine what I've learned as a network engineer, and apply it to my career as a web developer.
+
+	what is galvanize? its a learning community that offers education and networking with relavent technologies and startup businesses
+
+
+
+
+
+/*
+===============================================
+10/20/2016
+===============================================
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	===============================================
+	10/25/2016
+	===============================================
+	*/
+AJAX -
+	- asynchronous js and XML
+	- exchanging data with a server asynchronously
+	WHY?
+		- no one likes to wait
+	Why does it use JSON now instead of XML?
+		- JSON uses objects, so it is less verbose than XML, and makes it easier to read and parse
+
+/*
+===============================================
+10/27/2016
+===============================================
+*/
+
+- Closure is an inner function that has access to the outer functions variables and methods. AKA scope chain.
+
+function count() {
+	var count = 0;
+	return function() {
+		count += 1;
+		console.log(count);
+	}
+}
+var testCounter = count();
+var testCounter2 = count();
+
+
+/*
+===============================================
+Q1 Notes
+===============================================
+*/
+Primary Idea - Star wars Asteroid
+Secondary Idea - Speed test
+
+Star wars Asteroid
+ 	- Phaser for Asteroid game mechanics
+ 	- PNGs or SVGs for X-wings and Tie fighters
+	 	- tie fighters take the place of asteroids
+		- x-wing takes place of the character
+	- Acapela-vaas API for Yoda voice, reading static quotes to start. Stretch goal to use dynamic quotes, converted to Yoda speech.
+	- Input user's name to include in Yoda's speech.
+
+===============================================
+	Project Description
+
+	My project will be to create a Star Wars themed Asteroid game. The game mechanics (canvas, character, and enemy space ships) will be created using Phaser and X-Wing/Tie-Fighter PNGs or SVGs. Acapela Voice as a Service API will incorporate Yoda's voice to welcome the player to the site and encourage the player based on the score.
+
+	What problem does your project solve?
+		One problem my project solves is people sometimes work too much. Working too much causes people to burn out, making them less effective in the long run.
+	Who has this problem?
+		Many students and professionals of all industries suffer from burn out. Stress has become part of our daily lives.
+	How will your project solve this problem?
+		This project will create a way for people to take their minds off their work with an interesting and fun game. The idea is that they will be more effective at their work when they return from taking a break.
+	What inputs does it need?
+		The game will require keyboard directional arrow input to move their x-wing around the game area, and space bar input to fire at tie fighters.
+		The Yoda voice will require String input to know what text to translate to voice. The String input will be statically programmed. Dynamic encouragement quotes will be a stretch goal.
+		It will also ask for keyboard input from the user to enter their name, so that Yoda can say the user's name.
+	What outputs does it produce?
+		The output of the keyboard input will be the visual movement of the x-wing, and its laser blasts.
+		The output of the Acapella API will be Yoda's voice played automatically for the user to hear.
+	What web APIs will it use?
+		The Acapella API will be used to translate String quotes to audio of Yoda's voice.
+		One stretch goal is to use dynamic quotes for Yoda to say. This would use the Quotes Daddy API to get a new String, the Fun Translations API to arrange the quote in a way that Yoda would say it, and then Acapella to generate the audio of Yoda's voice.
+	What technologies will it use?
+		This project will use HTML, CSS, Javascript, JQuery, local storage, Bootstrap, AJAX.
+	What additional features will it have?
+		The user will be able to enter their name. The name String will be added to the text for Yoda to speak.
+		User scores will be tracked and stored in local Storage.
+===============================================
+
+	- brief description of the project to summarize purpose
+		- identify key features for MVP
+			- asteroid game:
+					- user can change the orientation of the character using keyboard input
+					- user can shoot using keyboard input
+					- user's score is tracked and displayed
+					- there is a definite beginning and end to the game
+			- site:
+				- user can hear Yoda speak using Acapella API
+				- user can see scores from previous games
+				- user can leave feedback about the site and game experience
+				- user can input their name in the landing page, Yoda will welcome them using their name.
+
+		- identify stretch goals
+			- implement a 'boss' at the end of the game, for example star destroyers
+			- use Quote Daddy API to fetch a RANDOM inspirational quote, use Fun Translations API to arrange the quote in Yoda Speak, use Acapella API to output the string to audio
+			- exploding effects when tie fighters are destroyed
+			- sound effects when user fires and destroys enemies
+	- ensure postman call to desired API returns desired results
+
+
+
+	Asteroid Game Flow:
+		- OPTION to show  brief controls - (yoda reads controls? Need a way to disable Yoda voice too)
+		- "Move your ship around with directional arrows"
+		- "Fire blasters with space bar"
+		- Press start
+		- show lives
+		- show score
+		- show time
+		- spawn tie fighters
+		- player shoots tie fighters
+		- increment/decrement time, score, and lives
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+===============================================
+11/1/2016
+===============================================
+*/
+
+Higher order functions
+
+	- maps
+		- input a function
+		- output a new array based on the function operation
+	- filter
+		- input a function
+		- output a new array based on the return criteria
+
+
+			var array = [1,2,3,4,5];
+			var reduced = array.reduce(sum);
+			function sum (total, num) {
+				return total + num;
+			}
+
+
+
+/*
+===============================================
+11/8/2016
+===============================================
+*/
+
+NODE JS
+	- V8 is the js interpreter. it is also what runs chrome
+	- node extends the functionality of v8 to provide additional features (db access, i/o, network connectivity)
+	- node hands off requests to v8, v8 handles it and lets node know when the request is complete.
+
+	- node modules
+		- ... are like code packages
+		- node itself is minimal, most functionality is provided through modules
+		-
+
+
+
+
+
+/*
+===============================================
+11/9/2016
+===============================================
+*/
+
+
+HTTP methods
+	- GET - retrieve data
+	- POST - send data
+	- PUT - replace data
+	- PATCH - partially modify
+	- DELETE - remove data
+
+HTTP request:
+	- protocol
+	- version
+	- status
+	- header
+	- body
+
+
+	/*
+	===============================================
+	11/15/2016
+	===============================================
+	*/
+
+SQL
+objectives
+	- use the postgresql repl to manage tables in a db (DDL)
+	- use the postgresql repl to manage rows in a table (DML)
+
+	DDL - data definition language - modify the schema
+		- create/delete a table
+	DML - data manipulation language - CRUD
+		- best practice:
+			prefix field names with the table name
+	DCL - authorize access to manipulate data

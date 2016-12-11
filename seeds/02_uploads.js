@@ -10,8 +10,8 @@ exports.seed = function(knex, Promise) {
         // Inserts seed entries
         knex('uploads').insert([{
           id: 1,
-          name: 'seed1test.txt',
-          path: uploadDir,
+          name: 'G36_Notes.txt',
+          path: uploadDir + '/upload_39fe0713af8bbbbcc7ceceeeac031a69_G36_Notes.txt',
           category: 'Text',
           user_id: 1,
           created_at: new Date('2016-06-26 14:26:16 UTC'),

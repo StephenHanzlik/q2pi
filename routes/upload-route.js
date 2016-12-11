@@ -38,7 +38,31 @@ router.post('/', function(req, res, next){
   // every time a file has been uploaded successfully,
   // rename it to it's orignal name
   form.on('file', function(field, file) {
-    fs.rename(file.path, path.join(form.uploadDir, file.name));
+    // var newPath = path.join(form.uploadDir, file.name);
+
+    //////// duplicate file name handling attempt 1
+    // if (fs.existsSync(path.join(form.uploadDir, file.name))) {
+    //   // next(boom.create(400, 'A file with that name already exists, please choose a different name for your upload.'));
+    //   file.name = 'copy of ' + file.name;
+    //   fs.rename(file.path, path.join(form.uploadDir, file.name));
+    // } else {
+    //   // console.log(file.path);
+    //   path.join(form.uploadDir, file.name);
+    // }
+    ////// duplicate file name handling attempt 2
+    // if (fs.existsSync(path.join(form.uploadDir, file.name))) {
+    //   while (fs.existsSync(path.join(form.uploadDir, file.name))) {
+    //     console.log(form.uploadDir, file.name, file.path);
+    //     file.name = 'copyof-' + file.name;
+    //     fs.rename(file.path, path.join(form.uploadDir, file.name));
+    //     file.path = path.join(form.uploadDir, file.name);
+    //   }
+    // } else {
+    //   fs.rename(file.path, path.join(form.uploadDir, file.name));
+    // }
+    ////// duplicate file name handling attempt 3
+    var uploadFileName = file.path + "_" + file.name;
+    fs.rename(file.path, uploadFileName);
   });
 
   // log any errors that occur
