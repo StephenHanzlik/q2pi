@@ -29,7 +29,7 @@
 
     $.ajax(options)
       .done(() => {
-        window.location.href = '/user-index.html';
+        window.location.href = '/user-landing.html';
       })
       .fail(($xhr) => {
         // Materialize.toast($xhr.responseText, 3000);
