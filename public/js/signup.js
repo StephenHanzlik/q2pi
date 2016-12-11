@@ -12,13 +12,17 @@
     const password = $('#inputPassword').val().trim();;
 
     if (!email) {
-      //return toastr.warning('Email must not be blank', 3000);
       console.log('no email');
+      // toastr.options = {
+      //   "positionClass": "toast-bottom-right"
+      // };
+      return toastr.error('Email must not be blank');
     }
 
     if (!password) {
-      //return toastr.warning('Password must not be blank', 3000);
       console.log('no password');
+      // return Materialize.warning('Password must not be blank', 3000);
+      return toastr.error('Password must not be blank');
     }
 
     const options = {
@@ -31,10 +35,10 @@
 
     $.ajax(options)
       .done(() => {
-        window.location.href = '/user-landing.html';
+        window.location.href = '/signin.html';
       })
       .fail(($xhr) => {
-        //toastr.warning($xhr.responseText, 3000);
+        toastr.error($xhr.responseText);
         console.log("sign up fail");
       });
   });
