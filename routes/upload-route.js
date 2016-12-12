@@ -13,11 +13,10 @@ var fs = require('fs');
 router.get('/', function(req, res, next){
   //original line from file-uploader
   // res.sendFile(path.join(__dirname, 'views/index.html'));
-    knex()
-      .select('*')
-      .from('uploads')
+    knex('uploads')
       .join('users', 'users.id', '=', 'uploads.user_id')
-      .orderBy('id')
+      .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at')
+      .orderBy('users.username')
       .then((result) => {
           res.send(result);
       })
