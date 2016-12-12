@@ -154,6 +154,9 @@ p {
 .attribution-pic {
   height: 100px;
 }
+.attribution-text {
+  text-align: center;
+}
 .contribution-pic {
   height: 100px;
   border-radius: 50%;
