@@ -37,9 +37,9 @@
   border-top-right-radius: 0;
 }
 .signin-container{
-  padding-left: 20%;
-  padding-right: 20%;
   padding-top: 30px;
+  margin-right: 10px;
+  margin-top: 100px;
 }
 
 .form-signup {
@@ -86,11 +86,9 @@
   border-top-right-radius: 0;
 }
 .signup-container{
-  padding-left: 10%;
-  padding-right: 0%;
   padding-top: 30px;
   margin-right: 10px;
-
+  margin-top: 100px;
 }
 .jumbotron {
   height: 700px;
@@ -100,9 +98,10 @@
   justify-content: center;
 }
 .opacity-div{
- height: 500px;
+ height: 460px;
  width: 650px;
- background-color: rgba(0,0,0, .65);
+ background-color: rgba(0,0,0, 1);
+ border-radius: 6%;
 }
 .egg-img-div{
   display: flex;
@@ -113,34 +112,22 @@
   display: flex;
   justify-content: center;
 }
-#landing-h1{
-  text-align: center;
-  color: antiquewhite;
-}
-#egg-img{
-  text-align: center;
-  padding-top: 200px;
-}
-
-/*#scroll{
-  paddin:;
-}*/
-/*tbody, thead{
-  display: block;
-}
-
-tbody{
-  height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}*/
 .scroll{
   overflow: auto;
   height: 500px;
   padding-right: 0px;
   padding-left: 0px;
 }
+#landing-h1{
+  text-align: center;
+  color: white;
+  /*color: black;*/
+}
+#egg-img{
+  text-align: center;
+  padding-top: 200px;
+}
 p{
   text-align: center;
-  color: antiquewhite;
+  color: white;
 }
