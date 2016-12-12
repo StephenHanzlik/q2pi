@@ -93,7 +93,7 @@
   padding-top: 120px;
 }
 .jumbotron {
-  height: 700px;
+  height: 550px;
   background-image:  url(../images/landingImage.jpg);
   background-size: cover;
   display: flex;
@@ -102,7 +102,7 @@
 .opacity-div{
  height: 460px;
  width: 650px;
- background-color: rgba(0,0,0, 1);
+ background-color: rgba(0,0,0, .9);
  border-radius: 6%;
 }
 .egg-img-div{
@@ -136,6 +136,34 @@
   text-align: center;
   padding-top: 200px;
 }
+p {
+  text-align: center;
+  color: white;
+}
+
+/*
+  index page 'about' section
+*/
+.black-text, .black-text > p, h2{
+  color: black;
+  text-align: center;
+}
+.info {
+  margin: 0 auto;
+}
+.attribution-pic {
+  height: 100px;
+}
+.contribution-pic {
+  height: 100px;
+  border-radius: 50%;
+}
+.contributors img{
+  margin:10px;
+}
+.info-row {
+  margin-bottom: 30px;
+}
 #eggbasket{
   margin-bottom: -11px;
   margin-top: -20px;
@@ -146,4 +174,3 @@ p{
 }
 h1{
   color: antiquewhite;
-}
