@@ -1,3 +1,5 @@
+'use strict';
+
 $('.upload-btn').on('click', function (){
     $('#upload-input').click();
     $('.progress-bar').text('0%');
@@ -52,9 +54,12 @@ $('#upload-input').on('change', function(){
             // once the upload reaches 100%, set the progress bar text to done
             if (percentComplete === 100) {
               $('.progress-bar').html('Done');
-            }
+              window.setTimeout( function(){
+                window.location.href = "http://localhost:8000/user-landing.html";
+              }, 3000);
+              }
 
-          }
+            }
 
         }, false);
 
