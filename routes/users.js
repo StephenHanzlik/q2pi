@@ -3,25 +3,42 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-const boom = require('boom'); // error logging module
-const morgan = require('morgan'); // req/res logging module
+const boom = require('boom');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const privateKey = 'my_awesome_cookie_signing_key';
 
-router.use(morgan('short')); // use morgan and format it's output
+const authorize = function(req, res, next) {
+  const token = req.cookies.token;
+  jwt.verify(token, privateKey, (err, decoded) => {
+    if (err) {
+      return res.redirect('/signin.html');
+    }
+    req.token = decoded;
+    next();
+  });
+};
 
-
-router.get('/', function(req, res, next) {
-  knex('users')
-    .orderBy('username')
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      next(err);
+router.get('/', authorize, function(req, res, next) {
+  jwt.verify(req.cookies.token, privateKey, function(err, decoded) {
+      if (err) {
+        // next(boom.create(401, 'Unauthorized'));
+        res.redirect('/signin.html');
+        return;
+      } else {
+        knex('users')
+          .orderBy('username')
+          .then((result) => {
+            res.send(result);
+          })
+          .catch((err) => {
+            next(err);
+          });
+      }
     });
 });
 
-router.get('/:username', function(req, res, next) {
+router.get('/:username', authorize, function(req, res, next) {
   knex('users')
     .select('username')
     .where({ username: req.params.username })
@@ -40,7 +57,6 @@ router.get('/:username', function(req, res, next) {
 
 
 router.post('/', (req, res, next) => {
-  console.log(req.body);
   var hash = bcrypt.hashSync(req.body.password, 8);
   knex('users')
     .where({ username: req.body.username })
@@ -65,7 +81,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-router.patch('/:id', function(req, res, next) {
+router.patch('/:id', authorize, function(req, res, next) {
   knex('users')
     .max('id')
     .then((result) => {
@@ -97,7 +113,7 @@ router.patch('/:id', function(req, res, next) {
     });
 });
 
-router.delete('/:username', function(req, res, next) {
+router.delete('/:username', authorize, function(req, res, next) {
   knex('users')
     .where({ username: req.params.username })
     .del()

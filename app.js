@@ -4,20 +4,22 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
+const cookieParser = require('cookie-parser');
+const privateKey = 'my_awesome_cookie_signing_key';
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(morgan('short'));
 app.use(express.static('public'));
-
+app.use(cookieParser());
 
 var users = require('./routes/users.js');
 var uploads = require('./routes/upload-route.js');
 var token = require('./routes/token-route.js');
 app.use('/users', users);
 app.use('/uploads', uploads);
-app.use('/token', token)
+app.use('/token', token);
 
 app.use((err, _req, res, _next) => {
   if (err.output && err.output.statusCode) {
@@ -35,5 +37,7 @@ app.use((err, _req, res, _next) => {
 app.listen(port, () => {
     console.log('Listening on http://localhost:' + port);
 });
+
+
 
 module.exports = app;

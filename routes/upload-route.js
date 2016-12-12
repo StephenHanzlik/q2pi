@@ -2,30 +2,41 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-const boom = require('boom'); // error logging module
-const morgan = require('morgan'); // req/res logging module
+const boom = require('boom');
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
+const jwt = require('jsonwebtoken');
+const privateKey = 'my_awesome_cookie_signing_key';
 
-// app.use(express.static(path.join(__dirname, 'public')));
 
-router.get('/', function(req, res, next){
-  //original line from file-uploader
-  // res.sendFile(path.join(__dirname, 'views/index.html'));
-    knex('uploads')
-      .join('users', 'users.id', '=', 'uploads.user_id')
-      .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at')
-      .orderBy('users.username')
-      .then((result) => {
-          res.send(result);
-      })
-      .catch((err) => {
-          next(err);
-      });
+const authorize = function(req, res, next) {
+  const token = req.cookies.token;
+  jwt.verify(token, privateKey, (err, decoded) => {
+    if (err) {
+      return res.redirect('/signin.html');
+    }
+    req.token = decoded;
+    next();
+  });
+};
+
+
+router.get('/', authorize, function(req, res, next){
+
+  knex('uploads')
+    .join('users', 'users.id', '=', 'uploads.user_id')
+    .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at')
+    .orderBy('users.username')
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        next(err);
+    });
 });
 
-router.post('/', function(req, res, next){
+router.post('/', authorize, function(req, res, next){
 
   // create an incoming form object
   var form = new formidable.IncomingForm();
@@ -45,20 +56,45 @@ router.post('/', function(req, res, next){
     // for example '.../upload_39fe0713af8bbbbcc7ceceeeac031a69' + "_" 'G36_Notes.txt'
     var uniqueFileName = file.path + "_" + file.name;
 
+    // const userId = function () {
+    //   // knex('users').where({
+    //   //   first_name: 'Test',
+    //   //   last_name:  'User'
+    //   // }).select('id')
+    //   // console.log(req.token);
+    //  knex('users')
+    //   .where({email: req.token})
+    //   .select('id')
+    //   .first()
+    //   .then((result) => {
+    //     console.log(result);
+    //   });
+    // };
+    // console.log(userId());
+
     fs.rename(file.path, uniqueFileName, function(){
-      knex('uploads')
+      // get uploader's user id
+      knex('users')
+       .where({email: req.token})
+       .select('id')
+       .first()
+       .then((user) => {
+         knex('uploads')
           .insert({
               name: file.name,
               path: uniqueFileName,
               category: 'text',
-              user_id: 1
-          }, '*')
+              user_id:
+              // 1
+              user.id
+            }, '*')
           .then((result) => {
                 res.end('success\n' + result);
           })
           .catch((err) => {
               next(err);
           });
+        });
       });
 
   });

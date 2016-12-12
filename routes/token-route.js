@@ -2,9 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-const boom = require('boom'); // error logging module
-const bcrypt = require('bcrypt'); // password hashing module
-const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const boom = require('boom');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const privateKey = 'my_awesome_cookie_signing_key';
 
 
