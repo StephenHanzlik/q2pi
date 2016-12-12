@@ -26,7 +26,7 @@ router.get('/', authorize, function(req, res, next){
 
   knex('uploads')
     .join('users', 'users.id', '=', 'uploads.user_id')
-    .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at')
+    .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at', 'uploads.path')
     .orderBy('users.username')
     .then((result) => {
         res.send(result);
@@ -55,7 +55,7 @@ router.post('/', authorize, function(req, res, next){
     // this allows a file to be uploaded multiple times, but not overwrite existing files in the filesystem
     // for example '.../upload_39fe0713af8bbbbcc7ceceeeac031a69' + "_" 'G36_Notes.txt'
     var uniqueFileName = file.path + "_" + file.name;
-
+    console.log(file);
     // const userId = function () {
     //   // knex('users').where({
     //   //   first_name: 'Test',
@@ -83,9 +83,9 @@ router.post('/', authorize, function(req, res, next){
           .insert({
               name: file.name,
               path: uniqueFileName,
-              category: 'text',
+                // TODO: change category to the download_path, category is temporarily being used as the download path for client's 'file download' links
+                category: uniqueFileName.slice(uniqueFileName.indexOf('uploads/upload_')),
               user_id:
-              // 1
               user.id
             }, '*')
           .then((result) => {
