@@ -23,6 +23,7 @@ const authorize = function(req, res, next) {
 
 
 router.get('/', authorize, function(req, res, next){
+
   knex('uploads')
     .join('users', 'users.id', '=', 'uploads.user_id')
     .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at')
@@ -55,20 +56,45 @@ router.post('/', authorize, function(req, res, next){
     // for example '.../upload_39fe0713af8bbbbcc7ceceeeac031a69' + "_" 'G36_Notes.txt'
     var uniqueFileName = file.path + "_" + file.name;
 
+    // const userId = function () {
+    //   // knex('users').where({
+    //   //   first_name: 'Test',
+    //   //   last_name:  'User'
+    //   // }).select('id')
+    //   // console.log(req.token);
+    //  knex('users')
+    //   .where({email: req.token})
+    //   .select('id')
+    //   .first()
+    //   .then((result) => {
+    //     console.log(result);
+    //   });
+    // };
+    // console.log(userId());
+
     fs.rename(file.path, uniqueFileName, function(){
-      knex('uploads')
+      // get uploader's user id
+      knex('users')
+       .where({email: req.token})
+       .select('id')
+       .first()
+       .then((user) => {
+         knex('uploads')
           .insert({
               name: file.name,
               path: uniqueFileName,
               category: 'text',
-              user_id: 1
-          }, '*')
+              user_id:
+              // 1
+              user.id
+            }, '*')
           .then((result) => {
                 res.end('success\n' + result);
           })
           .catch((err) => {
               next(err);
           });
+        });
       });
 
   });
