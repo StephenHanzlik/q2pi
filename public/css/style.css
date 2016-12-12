@@ -121,6 +121,12 @@
   padding-left: 0px;
   padding-top: 0px;
 }
+.navbar{
+
+}
+.white-header-text{
+  color: white;
+}
 #landing-h1{
   text-align: center;
   color: white;
@@ -130,7 +136,14 @@
   text-align: center;
   padding-top: 200px;
 }
+#eggbasket{
+  margin-bottom: -11px;
+  margin-top: -20px;
+}
 p{
   text-align: center;
   color: white;
+}
+h1{
+  color: antiquewhite;
 }
