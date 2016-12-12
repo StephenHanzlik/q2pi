@@ -2,30 +2,40 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-const boom = require('boom'); // error logging module
-const morgan = require('morgan'); // req/res logging module
+const boom = require('boom');
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
+const jwt = require('jsonwebtoken');
+const privateKey = 'my_awesome_cookie_signing_key';
 
-// app.use(express.static(path.join(__dirname, 'public')));
 
-router.get('/', function(req, res, next){
-  //original line from file-uploader
-  // res.sendFile(path.join(__dirname, 'views/index.html'));
-    knex('uploads')
-      .join('users', 'users.id', '=', 'uploads.user_id')
-      .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at')
-      .orderBy('users.username')
-      .then((result) => {
-          res.send(result);
-      })
-      .catch((err) => {
-          next(err);
-      });
+const authorize = function(req, res, next) {
+  const token = req.cookies.token;
+  jwt.verify(token, privateKey, (err, decoded) => {
+    if (err) {
+      return res.redirect('/signin.html');
+    }
+    req.token = decoded;
+    next();
+  });
+};
+
+
+router.get('/', authorize, function(req, res, next){
+  knex('uploads')
+    .join('users', 'users.id', '=', 'uploads.user_id')
+    .select('uploads.name', 'uploads.category', 'users.username', 'uploads.created_at')
+    .orderBy('users.username')
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        next(err);
+    });
 });
 
-router.post('/', function(req, res, next){
+router.post('/', authorize, function(req, res, next){
 
   // create an incoming form object
   var form = new formidable.IncomingForm();
