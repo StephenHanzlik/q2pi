@@ -131,10 +131,27 @@ p {
   text-align: center;
   color: white;
 }
+
+/*
+  index page 'about' section
+*/
 .black-text, .black-text > p, h2{
   color: black;
   text-align: center;
 }
 .info {
   margin: 0 auto;
+}
+.attribution-pic {
+  height: 100px;
+}
+.contribution-pic {
+  height: 100px;
+  border-radius: 50%;
+}
+.contributors img{
+  margin:10px;
+}
+.info-row {
+  margin-bottom: 30px;
 }
