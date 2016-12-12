@@ -56,7 +56,7 @@ $('#upload-input').on('change', function(){
               $('.progress-bar').html('Done');
               window.setTimeout( function(){
                 window.location.href = "http://localhost:8000/user-landing.html";
-              }, 3000);
+              }, 1700);
               }
 
             }

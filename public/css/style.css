@@ -154,6 +154,9 @@ p {
 .attribution-pic {
   height: 100px;
 }
+.attribution-pic img:hover{
+  opacity: 0.5;
+}
 .attribution-text {
   text-align: center;
 }
@@ -163,6 +166,9 @@ p {
 }
 .contributors img{
   margin:10px;
+}
+.contributors img:hover{
+  opacity: 0.5;
 }
 .info-row {
   margin-bottom: 30px;
