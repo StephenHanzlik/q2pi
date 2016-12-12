@@ -30,6 +30,9 @@ $('#upload-input').on('change', function(){
       success: function(data){
           console.log('upload successful!\n' + data);
       },
+      error: function(data, err) {
+        console.log('upload failed\n'+ JSON.stringify(data) + err);
+      },
       xhr: function() {
         // create an XMLHttpRequest
         var xhr = new XMLHttpRequest();
