@@ -12,11 +12,11 @@
       }
       $('.delete-button').on('click', function(){
         var pathStr = this.innerHTML;
-        var newStr = pathStr.slice(pathStr.indexOf('"') + 1, pathStr.indexOf('download') - 2);
+        var fileCat = pathStr.slice(pathStr.indexOf('"') + 1, pathStr.indexOf('download') - 2);
 
         const options = {
           contentType: 'application/json',
-          data: JSON.stringify({ newStr }),
+          data: JSON.stringify({ fileCat }),
           type: 'DELETE',
           url: '/uploads'
         };

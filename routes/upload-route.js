@@ -108,24 +108,35 @@ router.post('/', authorize, function(req, res, next){
   form.parse(req);
 
 });
-router.use(function (req, res, next) {
-  if(!req.user.isAdmin){
-    res.sendStatus(401);
-  } else {
-    next();
-  }
-});
+// router.use(function (req, res, next) {
+//   if(!req.user.isAdmin){
+//     res.sendStatus(401);
+//   } else {
+//     next();
+//   }
+// });
 router.delete('/', (req, res, next) => {
-  console.log();
-  // knex('uploads')
-  //  .where({category: newStr})
-  //  .del()
-  //   .then((result) => {
-  //           res.end('success\n' + result);
-  //     })
-  //     .catch((err) => {
-  //         next(err);
-  //     });
+
+      fs.unlink(req.body.fileCat, function(){
+            knex('uploads')
+           .where({category: req.body.fileCat})
+           .first()
+           .then((result) => {
+                   if(result.id) {
+                         return knex('uploads')
+                         .del()
+                         .where('id', result.id)
+                        .then((result) => {
+                              res.end('success\n' + result);
+                        })
+                        .catch((err) => {
+                              next(err);
+                        });
+                  }
+          });
+      });
 });
+
+
 
 module.exports = router;
