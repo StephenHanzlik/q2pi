@@ -117,7 +117,7 @@ router.post('/', authorize, function(req, res, next){
 // });
 router.delete('/', (req, res, next) => {
 
-      fs.unlink(req.body.fileCat, function(){
+      fs.unlink('/Users/stephenhanzlik/Workspace/Q2/Week10/q2pi/public/' + req.body.fileCat, function(){
             knex('uploads')
            .where({category: req.body.fileCat})
            .first()

@@ -8,11 +8,12 @@
         var created_at = file.created_at;
         // TODO: change category to the download_path, category is temporarily being used as the download path for client's 'file download' links
         var path = file.category;
-        $('#table tr:last').after('<tr class="delete-button"><td><a href="' + path + '" download>' + name + '</a></td><td>' + username + '</td><td>' + created_at + '</td><td>x</td></tr>');
+        $('#table tr:last').after('<tr class="delete-button"><td><a href="' + path + '" download>' + name + '</a></td><td>' + username + '</td><td>' + created_at + '</td><td >x</td></tr>');
       }
       $('.delete-button').on('click', function(){
         var pathStr = this.innerHTML;
         var fileCat = pathStr.slice(pathStr.indexOf('"') + 1, pathStr.indexOf('download') - 2);
+        console.log(fileCat);
 
         const options = {
           contentType: 'application/json',
