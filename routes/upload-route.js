@@ -109,15 +109,14 @@ router.post('/', authorize, function(req, res, next){
 
 });
 // router.use(function (req, res, next) {
-//   if(!req.user.isAdmin){
-//     res.sendStatus(401);
-//   } else {
+//   if(req.token === 'dinkydinky@gmail.com'){
 //     next();
+//   } else {
+//     res.sendStatus(401);
 //   }
 // });
 router.delete('/', (req, res, next) => {
-
-      fs.unlink('/Users/stephenhanzlik/Workspace/Q2/Week10/q2pi/public/' + req.body.fileCat, function(){
+      fs.unlink(__dirname + "/../public/" + req.body.fileCat, function(){
             knex('uploads')
            .where({category: req.body.fileCat})
            .first()
