@@ -7,7 +7,7 @@ $('.upload-btn').on('click', function (){
 });
 
 $('#upload-input').on('change', function(){
-  
+
   var files = $(this).get(0).files;
 
   if (files.length > 0){
@@ -55,7 +55,7 @@ $('#upload-input').on('change', function(){
             if (percentComplete === 100) {
               $('.progress-bar').html('Done');
               window.setTimeout( function(){
-                window.location.href = "http://localhost:8000/user-landing.html";
+                window.location.href = "/user-landing.html";
               }, 1700);
               }
 
