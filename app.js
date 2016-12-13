@@ -7,6 +7,7 @@ const port = process.env.PORT || 8000;
 
 const cookieParser = require('cookie-parser');
 const privateKey = 'my_awesome_cookie_signing_key';
+var serialio_route = require('./routes/serialport-route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -18,8 +19,9 @@ app.use(cookieParser());
 var users = require('./routes/users.js');
 var uploads = require('./routes/upload-route.js');
 var token = require('./routes/token-route.js');
-var serialio_route = require('./routes/serialport-route.js');
 
+
+app.use('/serialport', serialio_route);
 app.use('/users', users);
 app.use('/uploads', uploads);
 app.use('/token', token);
