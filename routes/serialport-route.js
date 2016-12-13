@@ -6,7 +6,7 @@
 
 const express = require('express');
 const router = express.Router();
-const arduino = require('.././devices/arduino');
+const arduino = require('../devices/arduino');
 
 router.get('/:color/:brightness', sendToSerial);
 
@@ -25,7 +25,7 @@ router.get('/:color/:brightness', sendToSerial);
 
 function sendToSerial(request, res) {
 console.log("f:sendToSerial");
-  console.log(arduino.sam);
+  console.log(arduino.myPort);
   // get the parameters from the URL:
   var brightnessCommand = request.params.color + request.params.brightness;
   console.log("received "+ brightnessCommand);

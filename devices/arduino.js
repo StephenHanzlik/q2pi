@@ -13,8 +13,7 @@ var serialport = require("serialport"); // include the serialport library
 var SerialPort  = serialport.SerialPort;	   // make a local instance of serial
 
 console.log("opening serial port: " + portName);
-exports.sam = 'hello**********';
-exports.myPort = new SerialPort(portName, {
+module.exports.myPort = new SerialPort(portName, {
 	baudRate: 9600,
 	parser: serialport.parsers.readline("\r\n") // delimit new line on end of data packet
 });
