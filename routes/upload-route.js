@@ -116,7 +116,16 @@ router.use(function (req, res, next) {
   }
 });
 router.delete('/', (req, res, next) => {
-res.clearCookie('token').send(true);
+  console.log();
+  // knex('uploads')
+  //  .where({category: newStr})
+  //  .del()
+  //   .then((result) => {
+  //           res.end('success\n' + result);
+  //     })
+  //     .catch((err) => {
+  //         next(err);
+  //     });
 });
 
 module.exports = router;
