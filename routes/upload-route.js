@@ -108,4 +108,15 @@ router.post('/', authorize, function(req, res, next){
   form.parse(req);
 
 });
+router.use(function (req, res, next) {
+  if(!req.user.isAdmin){
+    res.sendStatus(401);
+  } else {
+    next();
+  }
+});
+router.delete('/', (req, res, next) => {
+res.clearCookie('token').send(true);
+});
+
 module.exports = router;

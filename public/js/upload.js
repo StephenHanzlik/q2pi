@@ -7,6 +7,13 @@ $('.upload-btn').on('click', function (){
 });
 
 $('#upload-input').on('change', function(){
+  const options = {
+    contentType: 'application/json',
+    data: JSON.stringify({ email, username, password }),
+    dataType: 'json',
+    type: 'POST',
+    url: '/users'
+  };
 
   var files = $(this).get(0).files;
 
