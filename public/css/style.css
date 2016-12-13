@@ -259,6 +259,9 @@ p {
   height: 50px;
   float: right;
 }
+#nav-text-white{
+  color: white;
+}
 .egg-nav{
   margin-top: 9px;
   margin-right: 5px;
