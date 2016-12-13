@@ -203,6 +203,10 @@ p {
 .attribution-text {
   text-align: center;
 }
+.attribution-parent{
+  display: flex;
+  justify-content: center;
+}
 .contribution-pic {
   height: 100px;
   border-radius: 50%;
@@ -235,13 +239,36 @@ p {
 .info-row {
   margin-bottom: 30px;
 }
-#eggbasket{
-  margin-bottom: -11px;
-  margin-top: -20px;
+.upload-nav{
+  margin-right: -440px;
+}
+#egg-upload{
+  margin-top: -7px;
+  height: 50px;
+  float: right;
+}
+#egg-signin{
+  margin-top: 9px;
+  margin-right: 5px;
+  height: 50px;
+  float: right;
+}
+#egg-signup{
+  margin-top: 9px;
+  margin-right: 5px;
+  height: 50px;
+  float: right;
+}
+.egg-nav{
+  margin-top: 9px;
+  margin-right: 5px;
+  height: 50px;
+  float: right;
 }
 p{
   text-align: center;
   color: white;
 }
 h1{
-  color: antiquewhite;
+  color: white;
+}
