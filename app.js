@@ -7,10 +7,10 @@ const port = process.env.PORT || 8000;
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const privateKey = 'my_awesome_cookie_signing_key';
+var http = require('http');
 var path = require('path');
 var serialio_route = require('./routes/serialport-route');
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var xhr = new XMLHttpRequest();
+
 app.use(cookieParser());
 
 const authorize = function(req, res, next) {
@@ -35,12 +35,25 @@ const authorize = function(req, res, next) {
 app.get('/landing', authorize, function (req, res, next) {
   console.log(req.token);
 
-  // arduino login notification
-	// const request = new XMLHttpRequest();
-	// GET /output/color/level, and make an asynchronous request:
-	xhr.open( "GET", '/serialport/' + req.token + "/" + " signed in", true );
-	// close the request:
-	xhr.send( null );
+  var options = {
+    host: 'eggnogg',
+    port: '8000',
+    path: '/serialport'
+  };
+  var callback = function(response) {
+    var str = '';
+
+    //another chunk of data has been recieved, so append it to `str`
+    response.on('data', function (chunk) {
+      str += chunk;
+    });
+
+    //the whole response has been recieved, so we just print it out here
+    response.on('end', function () {
+      console.log(str);
+    });
+  };
+  http.request(options, callback).end();
 
   if (req.token === 'dinkydinky@gmail.com') {
     res.sendFile(path.join(__dirname + '/public/user-landing-admin.html'));
