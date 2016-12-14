@@ -31,17 +31,9 @@ const authorize = function(req, res, next) {
 };
 
 app.get('/landing', authorize, function (req, res, next) {
-<<<<<<< HEAD
   console.log('*******************authorized');
+  
   res.sendFile(path.join(__dirname + '/public/user-landing.html'));
-=======
-  console.log(req.token);
-  if (req.token === 'dinkydinky@gmail.com') {
-    res.sendFile(path.join(__dirname + '/public/user-landing-admin.html'));
-  } else {
-    res.sendFile(path.join(__dirname + '/public/user-landing.html'));
-  }
->>>>>>> 713f940c01990b6a66e9cf7dcbad2018c9da5d9d
 });
 
 app.use(bodyParser.json());
