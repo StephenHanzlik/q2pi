@@ -56,7 +56,7 @@ $('#upload-input').on('change', function(){
               $('.progress-bar').html('Done');
               window.setTimeout( function(){
                 window.location.href = "/user-landing.html";
-              }, 1700);
+              }, 1600);
               }
 
             }
