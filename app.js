@@ -71,14 +71,10 @@ var users = require('./routes/users.js');
 var uploads = require('./routes/upload-route.js');
 var token = require('./routes/token-route.js');
 
-
-
 app.use('/serialport', serialio_route);
 app.use('/users', users);
 app.use('/uploads', uploads);
 app.use('/token', token);
-
-app.use('/serialport', serialio_route);
 
 app.use((err, _req, res, _next) => {
   if (err.output && err.output.statusCode) {
