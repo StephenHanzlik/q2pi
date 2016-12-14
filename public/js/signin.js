@@ -26,17 +26,6 @@
       url: '/token',
       email: email
     };
-<<<<<<< HEAD
-        $.ajax(options)
-        .done(() => {
-          window.location.href = '/user-landing.html';
-        })
-        .fail(($xhr) => {
-          toastr.error($xhr.responseText);
-          console.log("sign in fail");
-        });
-=======
-
     $.ajax(options)
       .done(() => {
         // window.location.href = '/user-landing.html';
@@ -46,6 +35,5 @@
         toastr.error($xhr.responseText);
         console.log("sign in fail");
       });
->>>>>>> 713f940c01990b6a66e9cf7dcbad2018c9da5d9d
   });
 })();
