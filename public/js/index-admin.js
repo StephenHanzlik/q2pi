@@ -22,7 +22,7 @@
         };
         $.ajax(options)
           .done(() => {
-            window.location.href = '/user-landing-admin.html';
+            // window.location.href = '/user-landing-admin.html';
           })
           .fail(($xhr) => {
             console.log("Delete failed");

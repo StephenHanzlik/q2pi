@@ -21,7 +21,6 @@ const authorize = function(req, res, next) {
   });
 };
 
-
 router.get('/', authorize, function(req, res, next){
 
   knex('uploads')
@@ -108,14 +107,15 @@ router.post('/', authorize, function(req, res, next){
   form.parse(req);
 
 });
-// router.use(function (req, res, next) {
-//   if(req.token === 'dinkydinky@gmail.com'){
-//     next();
-//   } else {
-//     res.sendStatus(401);
-//   }
-// });
-router.delete('/', (req, res, next) => {
+router.use(authorize, function (req, res, next) {
+  console.log("req:  " + req.token);
+  if(req.token === 'dinkydinky@gmail.com'){
+    next();
+  } else {
+    res.sendStatus(401);
+  }
+});
+router.delete('/', authorize, (req, res, next) => {
       fs.unlink(__dirname + "/../public/" + req.body.fileCat, function(){
             knex('uploads')
            .where({category: req.body.fileCat})
