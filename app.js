@@ -58,20 +58,21 @@ app.get('/landing', authorize, function (req, res, next) {
     // path: '/serialport/' + 'Log in: ' + '/' + req.token
     path: '/serialport/Log%20in:%20/' + req.token
   };
-  var callback = function(response) {
-    var str = '';
-
-    //another chunk of data has been recieved, so append it to `str`
-    response.on('data', function (chunk) {
-      str += chunk;
-    });
-
-    //the whole response has been recieved, so we just print it out here
-    response.on('end', function () {
-      console.log(str);
-    });
-  };
-  http.request(options, callback).end();
+  // var callback = function(response) {
+  //   var str = '';
+  //
+  //   //another chunk of data has been recieved, so append it to `str`
+  //   response.on('data', function (chunk) {
+  //     str += chunk;
+  //   });
+  //
+  //   //the whole response has been recieved, so we just print it out here
+  //   response.on('end', function () {
+  //     console.log(str);
+  //   });
+  // };
+  // http.request(options, callback).end();
+  http.request(options).end();
 
   if (req.token === 'dinkydinky@gmail.com') {
     res.sendFile(path.join(__dirname + '/public/user-landing-admin.html'));
