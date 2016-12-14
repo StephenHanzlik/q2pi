@@ -12,9 +12,7 @@
       }
       $('.delete-button').on('click', function(){
         var pathStr = $(this).parent().get(0).innerHTML;
-        console.log("parent inner html: " + pathStr);
         var fileCat = pathStr.slice(pathStr.indexOf('"') + 1, pathStr.indexOf('download') - 2);
-        console.log(fileCat);
 
         const options = {
           contentType: 'application/json',
