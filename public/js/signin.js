@@ -28,7 +28,8 @@
 
     $.ajax(options)
       .done(() => {
-        window.location.href = '/user-landing.html';
+        // window.location.href = '/user-landing.html';
+        window.location.href = '/landing';
       })
       .fail(($xhr) => {
         toastr.error($xhr.responseText);

@@ -30,9 +30,13 @@ const authorize = function(req, res, next) {
   }
 };
 
-app.get('/user-landing.html', authorize, function (req, res, next) {
-  console.log('*******************authorized');
-  res.sendFile(path.join(__dirname + '/public/user-landing.html'));
+app.get('/landing', authorize, function (req, res, next) {
+  console.log(req.token);
+  if (req.token === 'dinkydinky@gmail.com') {
+    res.sendFile(path.join(__dirname + '/public/user-landing-admin.html'));
+  } else {
+    res.sendFile(path.join(__dirname + '/public/user-landing.html'));
+  }
 });
 
 app.use(bodyParser.json());
