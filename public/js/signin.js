@@ -23,16 +23,16 @@
       data: JSON.stringify({ email, password }),
       dataType: 'json',
       type: 'POST',
-      url: '/token'
+      url: '/token',
+      email: email
     };
-
-    $.ajax(options)
-      .done(() => {
-        window.location.href = '/user-landing.html';
-      })
-      .fail(($xhr) => {
-        toastr.error($xhr.responseText);
-        console.log("sign in fail");
-      });
+        $.ajax(options)
+        .done(() => {
+          window.location.href = '/user-landing.html';
+        })
+        .fail(($xhr) => {
+          toastr.error($xhr.responseText);
+          console.log("sign in fail");
+        });
   });
 })();

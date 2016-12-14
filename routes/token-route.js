@@ -19,10 +19,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    console.log(req.body);
     const bodyObj = {
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
     };
 
     var errObj = {

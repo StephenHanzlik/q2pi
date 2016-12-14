@@ -30,7 +30,7 @@ const authorize = function(req, res, next) {
   }
 };
 
-app.get('/user-landing.html', authorize, function (req, res, next) {
+app.get('/landing', authorize, function (req, res, next) {
   console.log('*******************authorized');
   res.sendFile(path.join(__dirname + '/public/user-landing.html'));
 });
@@ -45,11 +45,11 @@ var uploads = require('./routes/upload-route.js');
 var token = require('./routes/token-route.js');
 
 
-
 app.use('/serialport', serialio_route);
 app.use('/users', users);
 app.use('/uploads', uploads);
 app.use('/token', token);
+
 
 app.use('/serialport', serialio_route);
 
