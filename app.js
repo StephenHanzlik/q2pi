@@ -55,7 +55,7 @@ app.get('/landing', authorize, function (req, res, next) {
   var options = {
     host: 'eggnogg',
     port: '8000',
-    path: '/serialport'
+    path: '/serialport/' + 'Log in: ' + '/' + req.token
   };
   var callback = function(response) {
     var str = '';
