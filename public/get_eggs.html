@@ -14,9 +14,16 @@
 </head>
 <body>
   <nav class="navbar navbar-light navbar-fixed-top" style="background-color: rgb(0, 0, 0);">
-  <h1 class="col-md-8"><a href="user-landing.html">EGGPiFS</a> | Egg Pi File Storage</h1>
-  <img class="egg-nav" src="images/egg.png">
-</nav>
+    <div class="col-md-6">
+      <h1><a href="index.html">EggPi </a>| File Sharing <img id="egg-logo" src="images/egg.png"></h1>
+    </div>
+    <div  class="nav-links col-md-6">
+      <ul>
+        <li><h1><a href="get_eggs.html">Upload Eggs |</a></h1></li>
+        <li><h1><a id="signout-btn" href="get_eggs.html">Sign out |</a></h1></li>
+      </ul>
+    </div>
+  </nav>
   <div class="container upload-container">
     <div class="row">
       <div class="col-xs-12">
@@ -38,5 +45,7 @@
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script type="text/javascript" src="js/vendors/bootstrap.min.js"></script>
   <script src="js/upload.js"></script>
+  <script type="text/javascript" src="js/signout.js"></script>
+
 </body>
 </html>
