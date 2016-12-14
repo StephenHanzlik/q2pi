@@ -162,7 +162,9 @@
   padding-top: 0px;
 }
 .navbar{
-
+  -webkit-box-shadow: 0 10px 6px -6px #999;
+      -moz-box-shadow: 0 10px 6px -6px #999;
+      box-shadow: 0 10px 6px -6px #999;
 }
 .white-header-text{
   color: white;
@@ -239,13 +241,23 @@ p {
 .info-row {
   margin-bottom: 30px;
 }
-.upload-nav{
-  margin-right: -440px;
+.nav-links {
+  display:inline;
+  text-align: right;
+  margin-top: 5px;
 }
-#egg-upload{
-  margin-top: -7px;
+.nav-links h1{
+  font-size: 20px;
+}
+.nav-links li {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: top;
+}
+#egg-logo{
+  margin: -10px 0 0 10px;
   height: 50px;
-  float: right;
+  /*float: right;*/
 }
 #egg-signin{
   margin-top: 9px;
