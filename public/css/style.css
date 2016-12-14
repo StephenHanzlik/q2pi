@@ -206,6 +206,7 @@ p {
 }*/
 .attribution-text {
   text-align: center;
+  margin-top: 40px;
 }
 .attribution-parent{
   display: flex;
@@ -243,11 +244,18 @@ p {
 .info-row {
   margin-bottom: 5px;
 }
+.egg-nog{
+  width: 600px;
+}
 .upload-nav{
   margin-right: -440px;
 }
 .egg-load{
   width: 370px;
+}
+.pic-margin{
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 #egg-upload{
   margin-top: -7px;
