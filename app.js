@@ -32,6 +32,14 @@ const authorize = function(req, res, next) {
 
 app.get('/landing', authorize, function (req, res, next) {
   console.log(req.token);
+
+  // arduino login notification
+	const request = new XMLHttpRequest();
+	// GET /output/color/level, and make an asynchronous request:
+	request.open( "GET", '/serialport/' + req.token + "/" + " signed in", true );
+	// close the request:
+	request.send( null );
+
   if (req.token === 'dinkydinky@gmail.com') {
     res.sendFile(path.join(__dirname + '/public/user-landing-admin.html'));
   } else {
