@@ -195,6 +195,10 @@ p {
   height: 100px;
   border-radius: 50%;
 }
+.attribution-pic-egg {
+  height: 100px;
+  border-radius: 45%;
+}
 /*.attribution-pic img:hover{
   -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -202,6 +206,7 @@ p {
 }*/
 .attribution-text {
   text-align: center;
+  margin-top: 40px;
 }
 .attribution-parent{
   display: flex;
@@ -237,10 +242,20 @@ p {
   box-shadow:         1px 1px 4px 5px #ccc;
 }*/
 .info-row {
-  margin-bottom: 30px;
+  margin-bottom: 5px;
+}
+.egg-nog{
+  width: 600px;
 }
 .upload-nav{
   margin-right: -440px;
+}
+.egg-load{
+  width: 370px;
+}
+.pic-margin{
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 #egg-upload{
   margin-top: -7px;
