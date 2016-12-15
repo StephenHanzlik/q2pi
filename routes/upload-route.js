@@ -48,11 +48,11 @@ router.post('/', authorize, function(req, res, next) {
   // Create a bucket and upload something into it
   var bucketName = 'q2pi';
   // + uuid.v4();
-  var keyName = '8888.txt';
+  var keyName = file.name;
 
-  s3.createBucket({ Bucket: bucketName }, function() {
-    var params = { Bucket: bucketName, Key: keyName, Body: 'Hello World!' };
-    s3.putObject(params, function(err, data) {
+  s3.createBucket({ Bucket: bucketName, Body: file.path }, function(feild, file) {
+    var params = { Bucket: bucketName, Key: keyName, Body: file.path };
+    s3.putObject(params, function(err, data, file) {
       if (err) {
         console.log(err);
       } else {
