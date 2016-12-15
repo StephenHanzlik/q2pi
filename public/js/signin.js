@@ -14,8 +14,11 @@
     }
 
     if (!password) {
-      return toastr.error('Password must not be blank');
       console.log('no password');
+      $('#welcome-modal').modal('show');
+      // Create the audio player, autoplay the sound downloaded
+      $("#demo_voices_player").html("<audio src='../sounds/magic_word_c.mp3' controls='controls' autoplay='autoplay' style='display: none'/>");
+      return toastr.error('Password must not be blank');
     }
 
     const options = {
