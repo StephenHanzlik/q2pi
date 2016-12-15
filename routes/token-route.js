@@ -51,7 +51,7 @@ router.post('/', function(req, res, next) {
                     }).send(result);
                     var options = {
                       port: '8000',
-                      path: '/serialport/Log%20in:%20/' + req.token
+                      path: '/serialport/Log%20in:%20/' + req.body.email
                     };
                     http.request(options).end();
                 } else {
