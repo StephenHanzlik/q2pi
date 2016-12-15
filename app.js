@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const privateKey = 'my_awesome_cookie_signing_key';
 var http = require('http');
 var path = require('path');
+require('longjohn');
 
 app.use(cookieParser());
 
