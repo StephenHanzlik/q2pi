@@ -46,8 +46,9 @@ router.post('/', authorize, function(req, res, next) {
   var s3 = new AWS.S3();
 
   // Create a bucket and upload something into it
-  var bucketName = 'dinkytestings' + uuid.v4();
-  var keyName = 'thedinkyhaslanded.txt';
+  var bucketName = 'q2pi';
+  // + uuid.v4();
+  var keyName = '8888.txt';
 
   s3.createBucket({ Bucket: bucketName }, function() {
     var params = { Bucket: bucketName, Key: keyName, Body: 'Hello World!' };
