@@ -2,7 +2,7 @@
 
 (function() {
 
-    const $uploadlink = $('#upload-link-btn');
+    const $uploadlink = $('.upload-link-btn');
 
     $uploadlink.click((event) => {
     event.preventDefault();
