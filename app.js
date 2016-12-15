@@ -45,13 +45,13 @@ app.get('/serialport/:event/:data', function(request, res) {
   console.log("f:sendToSerial");
   // get the parameters from the URL:
   var eventAndCommand = request.params.event + request.params.data;
-  console.log("received "+ eventAndCommand);
+  console.log("received " + eventAndCommand);
   // xmit to serial port close connection
   arduino.myPort.write(eventAndCommand);
   res.send('success');
 });
 
-app.get('/landing', authorize, function (req, res, next) {
+app.get('/landing', authorize, function(req, res, next) {
   console.log(req.token);
 
   var options = {
@@ -60,20 +60,20 @@ app.get('/landing', authorize, function (req, res, next) {
     // path: '/serialport/' + 'Log in: ' + '/' + req.token
     path: '/serialport/Log%20in:%20/' + req.token
   };
-              // var callback = function(response) {
-              //   var str = '';
-              //
-              //   //another chunk of data has been recieved, so append it to `str`
-              //   response.on('data', function (chunk) {
-              //     str += chunk;
-              //   });
-              //
-              //   //the whole response has been recieved, so we just print it out here
-              //   response.on('end', function () {
-              //     console.log(str);
-              //   });
-              // };
-              // http.request(options, callback).end();
+  // var callback = function(response) {
+  //   var str = '';
+  //
+  //   //another chunk of data has been recieved, so append it to `str`
+  //   response.on('data', function (chunk) {
+  //     str += chunk;
+  //   });
+  //
+  //   //the whole response has been recieved, so we just print it out here
+  //   response.on('end', function () {
+  //     console.log(str);
+  //   });
+  // };
+  // http.request(options, callback).end();
   http.request(options).end();
   console.log(res);
 
@@ -86,7 +86,7 @@ app.get('/landing', authorize, function (req, res, next) {
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('short'));
 app.use(express.static('public'));
 
@@ -115,7 +115,7 @@ app.use((err, _req, res, _next) => {
 });
 
 app.listen(port, () => {
-    console.log('Listening on http://localhost:' + port);
+  console.log('Listening on http://localhost:' + port);
 });
 
 
