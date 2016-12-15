@@ -73,7 +73,7 @@ app.get('/landing', authorize, function (req, res, next) {
   //   });
   // };
   // http.request(options, callback).end();
-  http.request(options).end();
+  // http.request(options).end();
 
   if (req.token === 'dinkydinky@gmail.com') {
     res.sendFile(path.join(__dirname + '/public/user-landing-admin.html'));
