@@ -46,18 +46,20 @@ router.post('/', authorize, function(req, res, next) {
   var s3 = new AWS.S3();
 
   // Create a bucket and upload something into it
-  var bucketName = 'q2pi' + uuid.v4();
-  var keyName = 'piRoute.txt';
+  var bucketName = 'q2pi';
+  // + uuid.v4();
+  var keyName = 'thedinkyhaslanded.txt';
 
-  s3.createBucket({ Bucket: bucketName }, function() {
-    var params = { Bucket: bucketName, Key: keyName, Body: 'Hello World!' };
-    s3.putObject(params, function(err, data) {
-      if (err)
-        console.log(err)
-      else
-        console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
-    });
+  // s3.createBucket({ Bucket: bucketName }, function() {
+  var params = { Bucket: bucketName, Key: keyName, Body: 'Hello World!' };
+  s3.putObject(params, function(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
+    }
   });
+  // });
   // create an incoming form object
   var form = new formidable.IncomingForm();
 
