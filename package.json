@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/StephenHanzlik/q2pi#readme",
   "dependencies": {
+    "aws-sdk": "^2.7.14",
     "bcrypt": "^1.0.0",
     "body-parser": "^1.15.2",
     "boom": "^4.2.0",
