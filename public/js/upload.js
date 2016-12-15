@@ -55,7 +55,7 @@ $('#upload-input').on('change', function(){
             if (percentComplete === 100) {
               $('.progress-bar').html('Done');
               window.setTimeout( function(){
-                window.location.href = "/user-landing.html";
+                window.location.href = "/landing";
               }, 1600);
               }
 
