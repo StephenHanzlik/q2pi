@@ -13,7 +13,7 @@
         var day = date.slice(8, 10);
         // TODO: change category to the download_path, category is temporarily being used as the download path for client's 'file download' links
         var path = file.category;
-        $('#table tr:last').after('<tr class="delete-button"><td><a href="' + path + '" download>' + name + '</a></td><td>' + username + '</td><td>' + month + "-" + day + "-" + year + "    " + time + '</td><td >x</td></tr>');
+        $('#table tr:last').after('<tr><td><a href="' + path + '" download>' + name + '</a></td><td>' + username + '</td><td>' + month + "-" + day + "-" + year + "    " + time + '</td></tr>');
       }
     })
     .fail(() => {
