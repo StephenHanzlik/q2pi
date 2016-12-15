@@ -259,6 +259,10 @@ p {
 }
 .egg-load{
   width: 370px;
+  box-shadow: 0 10px 10px -9px rgba(0, 0, 0, 1);
+}
+.egg-load-screenshot{
+  width: 500px;
 }
 .pic-margin{
   margin-top: 15px;
