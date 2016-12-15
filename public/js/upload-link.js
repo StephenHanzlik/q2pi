@@ -9,16 +9,16 @@
 
     const options = {
       dataType: 'json',
-      type: 'get',
+      type: 'post',
       url: '/token'
     };
 
     $.ajax(options)
       .done(() => {
-        window.location.href = '/get_eggs.html';
+        window.location.href = '/landing';
       })
       .fail(() => {
-        toastr.error('Login or Sign Up to Upload Files. Please try again.', 3000);
+        toastr.error('You must sign in to access files');
       });
 });
 })();
