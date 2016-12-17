@@ -1,3 +1,4 @@
+/*SIGN IN*/
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -40,6 +41,7 @@
   margin-top: 100px;
 }
 
+/*SIGN UP*/
 .form-signup {
   max-width: 330px;
   padding: 15px;
@@ -66,13 +68,11 @@
 .form-signup .form-control:focus {
   z-index: 2;
 }
-
 .form-signup input[type="name"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-
 .form-signup input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
@@ -88,29 +88,17 @@
   margin-right: 10px;
   margin-top: 100px;
 }
+
+
+/*UPLOAD*/
 .upload-container{
   width: 70%;
   padding-top: 120px;
 }
-/* parallax example */
-/*.bg {
-  background: url('/assets/example/bg_blueplane.jpg') no-repeat center center;
-  position: fixed;
-  width: 100%;
-  height: 350px; same height as jumbotron
-  top:0;
-  left:0;
-  z-index: -1;
-}
-.jumbotron {
-  height: 350px;
-  color: white;
-  text-shadow: #444 0 1px 1px;
-  background:transparent;
-}*/
 
 
-/* parallax test */
+/*INDEX PAGE*/
+  /*PARALLAX*/
 .bg {
   background:  url(../images/landingImage-parallax-blur-dark.jpg) no-repeat center center;
   position: fixed;
@@ -126,25 +114,6 @@
   text-shadow: #444 0 1px 1px;
   background: transparent;
 }
-
-
-
-/* parallax (original)*/
-/*.jumbotron {
-  height: 550px;
-  background-image:  url(../images/landingImage.jpg);
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-}
-}*/
-
-/*.opacity-div{
- height: 460px;
- width: 650px;
- background-color: rgba(0,0,0, .9);
- border-radius: 6%;
-}*/
 .egg-img-div{
   display: flex;
   justify-content: center;
@@ -161,6 +130,8 @@
   padding-left: 0px;
   padding-top: 0px;
 }
+
+/*NAV*/
 .navbar{
   -webkit-box-shadow: 0 10px 6px -6px #999;
       -moz-box-shadow: 0 10px 6px -6px #999;
@@ -183,6 +154,7 @@ p {
   color: white;
 }
 
+
 /*
   index page 'about' section
 */
@@ -201,11 +173,6 @@ p {
   height: 100px;
   border-radius: 45%;
 }
-/*.attribution-pic img:hover{
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
-}*/
 .attribution-text {
   text-align: center;
   margin-top: 40px;
@@ -237,12 +204,6 @@ p {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-/*.contributors img:hover{
-  /*opacity: 0.5;*/
-  /*-moz-box-shadow:    1px 1px 4px 5px rgba(0, 0, 0, 1);
-  -webkit-box-shadow: 1px 1px 4px 5px #ccc;
-  box-shadow:         1px 1px 4px 5px #ccc;
-}*/
 .info-row {
   margin-bottom: 5px;
 }
@@ -279,7 +240,6 @@ p {
 #egg-logo{
   margin: -10px 0 0 10px;
   height: 50px;
-  /*float: right;*/
 }
 #egg-signin{
   margin-top: 9px;
@@ -309,8 +269,6 @@ p{
 h1{
   color: white;
 }
-
-
 
 #welcome-modal {
  vertical-align: middle;
