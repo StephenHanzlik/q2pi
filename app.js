@@ -80,7 +80,7 @@ var sign_s3 = require('./routes/s3-upload-route.js')
 app.use('/users', users);
 app.use('/uploads', uploads);
 app.use('/token', token);
-app.use('/sign_s3', sign_s3)
+app.use('/sign-s3', sign_s3)
 
 app.use((err, _req, res, _next) => {
   if (err.output && err.output.statusCode) {

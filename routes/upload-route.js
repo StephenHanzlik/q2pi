@@ -92,13 +92,13 @@ router.post('/', authorize, function(req, res, next) {
                         }, '*')
                         .then((result) => {
                             res.end('success\n' + result);
-                            var options = {
-                                // host: 'localhost',
-                                port: '8000',
-                                // path: '/serialport/' + 'Log in: ' + '/' + req.token
-                                path: '/serialport/File%20/Uploaded!'
-                            };
-                            http.request(options).end();
+                            // var options = {
+                            //     // host: 'localhost',
+                            //     port: '8000',
+                            //     // path: '/serialport/' + 'Log in: ' + '/' + req.token
+                            //     path: '/serialport/File%20/Uploaded!'
+                            // };
+                            // http.request(options).end();
                         })
                         .catch((err) => {
                             next(err);
