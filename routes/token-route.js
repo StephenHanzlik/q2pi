@@ -49,11 +49,11 @@ router.post('/', function(req, res, next) {
                     res.cookie('token', token, {
                         httpOnly: true
                     }).send(result);
-                    var options = {
-                      port: '8000',
-                      path: '/serialport/Log%20in:%20/' + req.body.email
-                    };
-                    http.request(options).end();
+                    // var options = {
+                    //   port: '8000',
+                    //   path: '/serialport/Log%20in:%20/' + req.body.email
+                    // };
+                    // http.request(options).end();
                 } else {
                     // bad password (says email or password to satisfy the test)
                     next(boom.create(400, 'Bad email or password'));
