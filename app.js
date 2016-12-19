@@ -72,7 +72,7 @@ app.use(express.static('public'));
 var users = require('./routes/users.js');
 var uploads = require('./routes/upload-route.js');
 var token = require('./routes/token-route.js');
-var sign_s3 = require('/routes/s3-upload-route.js')
+var sign_s3 = require('./routes/s3-upload-route.js')
 // var serialio_route = require('./routes/serialport-route.js');
 
 
