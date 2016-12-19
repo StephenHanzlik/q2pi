@@ -6,10 +6,11 @@ const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const privateKey = 'my_awesome_cookie_signing_key';
 var http = require('http');
 var path = require('path');
 require('longjohn');
+
+const privateKey = 'my_awesome_cookie_signing_key';
 
 app.use(cookieParser());
 
@@ -71,6 +72,7 @@ app.use(express.static('public'));
 var users = require('./routes/users.js');
 var uploads = require('./routes/upload-route.js');
 var token = require('./routes/token-route.js');
+var sign_s3 = require('/routes/s3-upload-route.js')
 // var serialio_route = require('./routes/serialport-route.js');
 
 
@@ -78,6 +80,7 @@ var token = require('./routes/token-route.js');
 app.use('/users', users);
 app.use('/uploads', uploads);
 app.use('/token', token);
+app.use('/sign_s3', sign_s3)
 
 app.use((err, _req, res, _next) => {
   if (err.output && err.output.statusCode) {

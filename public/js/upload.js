@@ -1,5 +1,42 @@
 'use strict';
 
+// called after successful getSignedRequest(file)
+function uploadFile(file, signedRequest, url){
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', signedRequest);
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        // document.getElementById('preview').src = url;
+        // document.getElementById('avatar-url').value = url;
+        alert('uploading file');
+      }
+      else{
+        alert('Could not upload file.');
+      }
+    }
+  };
+  xhr.send(file);
+}
+
+// called on file input change
+function getSignedRequest(file){
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+  xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        const response = JSON.parse(xhr.responseText);
+        uploadFile(file, response.signedRequest, response.url);
+      }
+      else{
+        alert('Could not get signed URL.');
+      }
+    }
+  };
+  xhr.send();
+}
+
 $('.upload-btn').on('click', function (){
     $('#upload-input').click();
     $('.progress-bar').text('0%');
@@ -9,6 +46,9 @@ $('.upload-btn').on('click', function (){
 $('#upload-input').on('change', function(){
 
   var files = $(this).get(0).files;
+
+  // AWS S3 - SIGNATURE FROM APP
+  getSignedRequest(file);
 
   if (files.length > 0){
     // create a FormData object which will be sent as the data payload in the
@@ -36,7 +76,7 @@ $('#upload-input').on('change', function(){
         console.log('upload failed\n'+ JSON.stringify(data) + err);
       },
       xhr: function() {
-        // create an XMLHttpRequest
+
         var xhr = new XMLHttpRequest();
 
         // listen to the 'progress' event
