@@ -47,8 +47,6 @@ $('#upload-input').on('change', function(){
 
   var files = $(this).get(0).files;
 
-  // AWS S3 - SIGNATURE FROM APP
-  getSignedRequest(file);
 
   if (files.length > 0){
     // create a FormData object which will be sent as the data payload in the
@@ -58,6 +56,9 @@ $('#upload-input').on('change', function(){
     // loop through all the selected files and add them to the formData object
     for (var i = 0; i < files.length; i++) {
       var file = files[i];
+      
+      // AWS S3 - SIGNATURE FROM APP
+      getSignedRequest(file);
 
       // add the files to formData object for the data payload
       formData.append('uploads[]', file, file.name);
