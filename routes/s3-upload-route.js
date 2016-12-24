@@ -4,7 +4,7 @@ const router = express.Router();
 const aws = require('aws-sdk');
 const S3_BUCKET = process.env.S3_BUCKET;
 
-router.get('/sign-s3', (req, res) => {
+router.get('/', (req, res) => {
   const s3 = new aws.S3();
   const fileName = req.query['file-name'];
   const fileType = req.query['file-type'];
@@ -13,14 +13,15 @@ router.get('/sign-s3', (req, res) => {
     Key: fileName,
     Expires: 60,
     ContentType: fileType,
-    ACL: 'public-read'
+    ACL: 'bucket-owner-full-control'
   };
-
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+  // console.log('*****************',s3Params);
+  s3.getSignedUrl('postObject', s3Params, (err, data) => {
     if(err){
       console.log(err);
       return res.end();
     }
+    // console.log('*************', data);
     const returnData = {
       signedRequest: data,
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`

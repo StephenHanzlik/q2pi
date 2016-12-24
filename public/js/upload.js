@@ -12,6 +12,7 @@ function uploadFile(file, signedRequest, url){
         alert('uploading file');
       }
       else{
+        console.log('*************', xhr.responseText);
         alert('Could not upload file.');
       }
     }
@@ -22,11 +23,14 @@ function uploadFile(file, signedRequest, url){
 // called on file input change
 function getSignedRequest(file){
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+  console.log(file.type);
+  // xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+  xhr.open('GET', `/sign-s3?file-name=${file.name}`);
   xhr.onreadystatechange = () => {
     if(xhr.readyState === 4){
       if(xhr.status === 200){
-        const response = JSON.parse(xhr.responseText);
+        console.log('&&&&&&&&&&&&', xhr.responseURL);
+        // const response = JSON.parse(xhr.responseText);
         uploadFile(file, response.signedRequest, response.url);
       }
       else{
@@ -56,7 +60,7 @@ $('#upload-input').on('change', function(){
     // loop through all the selected files and add them to the formData object
     for (var i = 0; i < files.length; i++) {
       var file = files[i];
-      
+
       // AWS S3 - SIGNATURE FROM APP
       getSignedRequest(file);
 
@@ -95,9 +99,9 @@ $('#upload-input').on('change', function(){
             // once the upload reaches 100%, set the progress bar text to done
             if (percentComplete === 100) {
               $('.progress-bar').html('Done');
-              window.setTimeout( function(){
-                window.location.href = "/landing";
-              }, 1600);
+              // window.setTimeout( function(){
+                // window.location.href = "/landing";
+              // }, 1600);
               }
 
             }
