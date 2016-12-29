@@ -66,30 +66,14 @@ router.post('/', authorize, function(req, res, next) {
         // create a unique string of characters plus the original file's name
         // this allows a file to be uploaded multiple times, but not overwrite existing files in the filesystem
         // for example '.../upload_39fe0713af8bbbbcc7ceceeeac031a69' + "_" 'G36_Notes.txt'
-        var uniqueFileName = file.path + "_" + file.name;
-        console.log(file);
+        var uniqueFilePath = file.path + "_" + file.name;
 
+        fs.rename(file.path, uniqueFilePath, function() {
+            let uniqueFileName =  uniqueFilePath
+              .slice(uniqueFilePath.indexOf('uploads/upload_'));
 
-        // s3fs -- code from tutorial, needs refactoring to work with this app
-        // var s3file = req.files.file;
-        // console.log(s3file);
-        // var stream = fs.createReadStream(s3file.path);
-        // console.log('return s3fs');
-        // S3FSImpl.writeFile(s3file.originalFilename, stream)
-        //   .then(function() {
-        //     fs.unlink(s3file.path, function(err){
-        //       if (err) {
-        //         console.error(err);
-        //       }
-        //     });
-        //     console.log('s3fs success');
-        //     res.send('success');
-        //   });
-
-
-        fs.rename(file.path, uniqueFileName, function() {
-            // s3fs -- second attempt
-            let stream = fs.createReadStream(uniqueFileName);
+            // AWS S3 UPLOADING
+            let stream = fs.createReadStream(uniqueFilePath);
             S3FSImpl.writeFile(uniqueFileName, stream)
               .then(function() {
                 console.log('s3fs success');
@@ -109,9 +93,9 @@ router.post('/', authorize, function(req, res, next) {
                     knex('uploads')
                         .insert({
                             name: file.name,
-                            path: uniqueFileName,
+                            path: uniqueFilePath,
                             // TODO: change category to the download_path, category is temporarily being used as the download path for client's 'file download' links
-                            category: uniqueFileName.slice(uniqueFileName.indexOf('uploads/upload_')),
+                            category: uniqueFileName,
                             user_id: user.id
                         }, '*')
                         .then((result) => {
