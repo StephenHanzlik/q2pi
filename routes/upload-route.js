@@ -1,6 +1,6 @@
 'use strict';
 const express = require('express');
-const router = express.Router();
+const router = express();
 const knex = require('../knex');
 const boom = require('boom');
 var path = require('path');
@@ -15,10 +15,12 @@ var S3FSImpl = new S3FS(
    accessKeyId: 'AKIAJNBAVVTT6UXVIJDQ',
    secretAccessKey: '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'
 });
+
 S3FSImpl.create();
 
-var multiparty = require('connect-multiparty'),
-  multipartyMiddleware = multiparty();
+
+// var multiparty = require('connect-multiparty');
+// var multipartyMiddleware = multiparty();
 
 const authorize = function(req, res, next) {
     const token = req.cookies.token;
@@ -30,8 +32,9 @@ const authorize = function(req, res, next) {
         next();
     });
 };
-
-router.use(multipartyMiddleware);
+// console.log('before use multiparty');
+// router.use(multipartyMiddleware);
+// console.log('after use multiparty');
 
 router.get('/', authorize, function(req, res, next) {
 
@@ -67,15 +70,34 @@ router.post('/', authorize, function(req, res, next) {
         console.log(file);
 
 
-        // s3fs
-        var s3file = req.files.file;
-        var stream = fs.createReadStream(s3file.path);
-        return s3fsImpl.writeFile(s3file.originalFilename, stream)
-          .then(function() {
+        // s3fs -- code from tutorial, needs refactoring to work with this app
+        // var s3file = req.files.file;
+        // console.log(s3file);
+        // var stream = fs.createReadStream(s3file.path);
+        // console.log('return s3fs');
+        // S3FSImpl.writeFile(s3file.originalFilename, stream)
+        //   .then(function() {
+        //     fs.unlink(s3file.path, function(err){
+        //       if (err) {
+        //         console.error(err);
+        //       }
+        //     });
+        //     console.log('s3fs success');
+        //     res.send('success');
+        //   });
 
-          })
 
         fs.rename(file.path, uniqueFileName, function() {
+            // s3fs -- second attempt
+            let stream = fs.createReadStream(uniqueFileName);
+            S3FSImpl.writeFile(uniqueFileName, stream)
+              .then(function() {
+                console.log('s3fs success');
+              })
+              .catch(function(err) {
+                next(err);
+              });
+
             // get uploader's user id
             knex('users')
                 .where({
