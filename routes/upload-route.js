@@ -10,10 +10,11 @@ const jwt = require('jsonwebtoken');
 const privateKey = 'my_awesome_cookie_signing_key';
 var http = require('http');
 var S3FS = require('s3fs');
+require('dotenv').config();
 var S3FSImpl = new S3FS(
-  'q2pi-s3fs-bucket', {
-   accessKeyId: 'AKIAJNBAVVTT6UXVIJDQ',
-   secretAccessKey: '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'
+  process.env.S3_BUCKET, {
+   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
 S3FSImpl.create();
