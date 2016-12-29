@@ -9,7 +9,16 @@ var fs = require('fs');
 const jwt = require('jsonwebtoken');
 const privateKey = 'my_awesome_cookie_signing_key';
 var http = require('http');
+var S3FS = require('s3fs');
+var S3FSImpl = new S3FS(
+  'q2pi-s3fs-bucket', {
+   accessKeyId: 'AKIAJNBAVVTT6UXVIJDQ',
+   secretAccessKey: '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'
+});
+S3FSImpl.create();
 
+var multiparty = require('connect-multiparty'),
+  multipartyMiddleware = multiparty();
 
 const authorize = function(req, res, next) {
     const token = req.cookies.token;
@@ -22,6 +31,7 @@ const authorize = function(req, res, next) {
     });
 };
 
+router.use(multipartyMiddleware);
 
 router.get('/', authorize, function(req, res, next) {
 
@@ -48,8 +58,6 @@ router.post('/', authorize, function(req, res, next) {
     // store all uploads in the /uploads directory
     form.uploadDir = path.join(__dirname, '../public/uploads');
 
-    // every time a file has been uploaded successfully,
-    // rename it to it's orignal name
     form.on('file', function(field, file) {
         ////// duplicate file name handling attempt 3
         // create a unique string of characters plus the original file's name
@@ -57,21 +65,15 @@ router.post('/', authorize, function(req, res, next) {
         // for example '.../upload_39fe0713af8bbbbcc7ceceeeac031a69' + "_" 'G36_Notes.txt'
         var uniqueFileName = file.path + "_" + file.name;
         console.log(file);
-        // const userId = function () {
-        //   // knex('users').where({
-        //   //   first_name: 'Test',
-        //   //   last_name:  'User'
-        //   // }).select('id')
-        //   // console.log(req.token);
-        //  knex('users')
-        //   .where({email: req.token})
-        //   .select('id')
-        //   .first()
-        //   .then((result) => {
-        //     console.log(result);
-        //   });
-        // };
-        // console.log(userId());
+
+
+        // s3fs
+        var s3file = req.files.file;
+        var stream = fs.createReadStream(s3file.path);
+        return s3fsImpl.writeFile(s3file.originalFilename, stream)
+          .then(function() {
+
+          })
 
         fs.rename(file.path, uniqueFileName, function() {
             // get uploader's user id
@@ -117,13 +119,7 @@ router.post('/', authorize, function(req, res, next) {
     form.parse(req);
 
 });
-// router.use(function (req, res, next) {
-//   if(req.token === 'dinkydinky@gmail.com'){
-//     next();
-//   } else {
-//     res.sendStatus(401);
-//   }
-// });
+
 router.delete('/', (req, res, next) => {
     fs.unlink(__dirname + "/../public/" + req.body.fileCat, function() {
         knex('uploads')
