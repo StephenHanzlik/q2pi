@@ -1,4 +1,4 @@
-![ScreenShot](https://raw.github.com/StephenHanzlik/q2pi/readme-improve/q2pi/readme-improve/about.png)
+![ScreenShot](https://raw.github.com/StephenHanzlik/q2pi/readme-improve/q2pi/readme-images/about.png)
 
 
 Pivotal Tracker Link:
