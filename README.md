@@ -1,4 +1,4 @@
-Cloud Based AWS Example:  https://grabc59-eggpi.herokuapp.com/index.html
+Cloud Based AWS S3 Example:  https://grabc59-eggpi.herokuapp.com/index.html
 
 
 ![ScreenShot](https://raw.github.com/StephenHanzlik/q2pi/readme-improve/readme-images/about.png)
