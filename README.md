@@ -1,4 +1,4 @@
-<a href="https://grabc59-eggpi.herokuapp.com/index.html">Cloud Based AWS S3</a>
+<a href="https://grabc59-eggpi.herokuapp.com/index.html">Deployed AWS S3 Example</a>
 
 
 ![ScreenShot](https://raw.github.com/StephenHanzlik/q2pi/readme-improve/readme-images/about.png)
